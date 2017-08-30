@@ -14,7 +14,7 @@ geomdf <- data.frame(geoms=geoms,col=mycols)
 ```
 
 ```{r,include=F}
-folder="/home/fabs/Data/ERODYN_lenny/ERODYN_GIS/RData_stats2/"
+folder="/mnt/bola/bola/08_projekte/ERODYN/tool_development/data/schmirn/RData_stats2/"
 Llist=c(3,10,15,20,25,30,40,50,75,100,125,150,200,250,400,1000)
 filelist_fl1 <- list.files(folder,pattern="fl1\\.")
 filelist_fl1 <- filelist_fl1[c(12,3,6,8,10,11,14,15,16,2,4,5,7,9,13,1)]
@@ -40,9 +40,16 @@ SImean_df <- data.frame(geoms)
 SIsd_df <- data.frame(geoms)
 MDmean_df <-data.frame(geoms)
 MDsd_df <-data.frame(geoms)
+shannon_results <- vector()
+richness_results <- vector()
+simpson_results <- vector()
+
 for (f in filelist_fl1){
 layer=unlist(strsplit(f,split=".RData"))
 load(paste(folder,f,sep=""))
+shannon_results <- c(shannon_results,shannon)
+simpson_results <- c(simpson_results,simpson)
+richness_results <- c(richness_results,richness)
 for (g in geoms){
 areasums_df[areasums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sum"]) == 0,NA,results[results$label == as.character(g),"area_sum"])
 
@@ -68,7 +75,8 @@ df=featuresums_df
 ylab="nr. of features"
 main="nr. of features vs. search radius"
 names(df) <- c("geoms",Llist)
-plot(x=1,type="n",xlim=c(1,max(Llist)),ylim=c(min(df[,2:17],na.rm=T),max(df[,2:17],na.rm=T)),main=main,ylab=ylab,xlab="search radius")
+#plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(min(df[,2:17],na.rm=T),max(df[,2:17],na.rm=T)),main=main,ylab=ylab,xlab="search radius")
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,175000),main=main,ylab=ylab,xlab="search radius")
 legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
 for (g in geoms){
 try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
@@ -81,7 +89,7 @@ df=areasums_df
 ylab="total area in m²"
 main="total area of landforms vs. search radius"
 names(df) <- c("geoms",Llist)
-plot(x=1,type="n",xlim=c(1,max(Llist)),ylim=c(min(df[,2:17],na.rm=T),max(df[,2:17],na.rm=T)),main=main,ylab=ylab,xlab="search radius")
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,6000000),main=main,ylab=ylab,xlab="search radius")
 legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
 for (g in geoms){
 try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
@@ -94,9 +102,826 @@ df=areamean_df
 ylab="mean size of features in m²"
 main="mean size of features vs. search radius"
 names(df) <- c("geoms",Llist)
-plot(x=1,type="n",xlim=c(1,max(Llist)),ylim=c(min(df[,2:17],na.rm=T),max(df[,2:17],na.rm=T)),main=main,ylab=ylab,xlab="search radius")
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,450),main=main,ylab=ylab,xlab="search radius")
 legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
 for (g in geoms){
 try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
 }
 ```
+
+
+```{r,echo=F}
+df=areasd_df
+ylab="standard deviation of the size of features in m²"
+main="standard deviation of the size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SImean_df
+ylab="mean shape index of features"
+main="mean shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SIsd_df
+ylab="standard deviation of the shape index of features"
+main="standard deviation of the shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,1.6),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+df=MDmean_df
+ylab="mean maximum distance of features"
+main="mean maximum distanve of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,16),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=MDsd_df
+ylab="standard deviation of the maximum distance of features"
+main="standard deviation of the maximum distance of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main="Diversity indices")
+lines(x=Llist,y=shannon_results,col="red")
+lines(x=Llist,y=simpson_results,col="blue")
+legend("topleft",lty=1,legend=c("shannon diversity","simpson_diversity"),col=c("red","blue"))
+```
+
+##flatness threshold = 3 °
+```{r,include=F}
+featuresums_df <- data.frame(geoms)
+areasums_df <- data.frame(geoms)
+areamean_df <- data.frame(geoms)
+areasd_df <- data.frame(geoms)
+SImean_df <- data.frame(geoms)
+SIsd_df <- data.frame(geoms)
+MDmean_df <-data.frame(geoms)
+MDsd_df <-data.frame(geoms)
+shannon_results <- vector()
+richness_results <- vector()
+simpson_results <- vector()
+
+for (f in filelist_fl3){
+layer=unlist(strsplit(f,split=".RData"))
+load(paste(folder,f,sep=""))
+shannon_results <- c(shannon_results,shannon)
+simpson_results <- c(simpson_results,simpson)
+richness_results <- c(richness_results,richness)
+for (g in geoms){
+areasums_df[areasums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sum"]) == 0,NA,results[results$label == as.character(g),"area_sum"])
+
+featuresums_df[featuresums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"featuresum"]) == 0,NA,results[results$label == as.character(g),"featuresum"])
+
+areamean_df[areamean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_mean"]) == 0,NA,results[results$label == as.character(g),"area_mean"])
+
+areasd_df[areasd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sd"]) == 0,NA,results[results$label == as.character(g),"area_sd"])
+
+SImean_df[SImean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"SI_mean"]) == 0,NA,results[results$label == as.character(g),"SI_mean"])
+
+SIsd_df[SIsd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"SI_sd"]) == 0,NA,results[results$label == as.character(g),"SI_sd"])
+
+MDmean_df[MDmean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"MaxDist_mean"]) == 0,NA,results[results$label == as.character(g),"MaxDist_mean"])
+
+MDsd_df[MDsd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"MaxDist_sd"]) == 0,NA,results[results$label == as.character(g),"MaxDist_sd"])
+}
+}
+```
+
+```{r,echo=F}
+df=featuresums_df
+ylab="nr. of features"
+main="nr. of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,175000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areasums_df
+ylab="total area in m²"
+main="total area of landforms vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,6000000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areamean_df
+ylab="mean size of features in m²"
+main="mean size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,450),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areasd_df
+ylab="standard deviation of the size of features in m²"
+main="standard deviation of the size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SImean_df
+ylab="mean shape index of features"
+main="mean shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SIsd_df
+ylab="standard deviation of the shape index of features"
+main="standard deviation of the shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,1.6),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+df=MDmean_df
+ylab="mean maximum distance of features"
+main="mean maximum distanve of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,16),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=MDsd_df
+ylab="standard deviation of the maximum distance of features"
+main="standard deviation of the maximum distance of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main="Diversity indices")
+lines(x=Llist,y=shannon_results,col="red")
+lines(x=Llist,y=simpson_results,col="blue")
+legend("topleft",lty=1,legend=c("shannon diversity","simpson_diversity"),col=c("red","blue"))
+```
+
+##flatness threshold = 5 °
+```{r,include=F}
+featuresums_df <- data.frame(geoms)
+areasums_df <- data.frame(geoms)
+areamean_df <- data.frame(geoms)
+areasd_df <- data.frame(geoms)
+SImean_df <- data.frame(geoms)
+SIsd_df <- data.frame(geoms)
+MDmean_df <-data.frame(geoms)
+MDsd_df <-data.frame(geoms)
+shannon_results <- vector()
+richness_results <- vector()
+simpson_results <- vector()
+
+for (f in filelist_fl5){
+layer=unlist(strsplit(f,split=".RData"))
+load(paste(folder,f,sep=""))
+shannon_results <- c(shannon_results,shannon)
+simpson_results <- c(simpson_results,simpson)
+richness_results <- c(richness_results,richness)
+for (g in geoms){
+areasums_df[areasums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sum"]) == 0,NA,results[results$label == as.character(g),"area_sum"])
+
+featuresums_df[featuresums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"featuresum"]) == 0,NA,results[results$label == as.character(g),"featuresum"])
+
+areamean_df[areamean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_mean"]) == 0,NA,results[results$label == as.character(g),"area_mean"])
+
+areasd_df[areasd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sd"]) == 0,NA,results[results$label == as.character(g),"area_sd"])
+
+SImean_df[SImean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"SI_mean"]) == 0,NA,results[results$label == as.character(g),"SI_mean"])
+
+SIsd_df[SIsd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"SI_sd"]) == 0,NA,results[results$label == as.character(g),"SI_sd"])
+
+MDmean_df[MDmean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"MaxDist_mean"]) == 0,NA,results[results$label == as.character(g),"MaxDist_mean"])
+
+MDsd_df[MDsd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"MaxDist_sd"]) == 0,NA,results[results$label == as.character(g),"MaxDist_sd"])
+}
+}
+```
+
+```{r,echo=F}
+df=featuresums_df
+ylab="nr. of features"
+main="nr. of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,175000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areasums_df
+ylab="total area in m²"
+main="total area of landforms vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,6000000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areamean_df
+ylab="mean size of features in m²"
+main="mean size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,450),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areasd_df
+ylab="standard deviation of the size of features in m²"
+main="standard deviation of the size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SImean_df
+ylab="mean shape index of features"
+main="mean shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SIsd_df
+ylab="standard deviation of the shape index of features"
+main="standard deviation of the shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,1.6),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+df=MDmean_df
+ylab="mean maximum distance of features"
+main="mean maximum distanve of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,16),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=MDsd_df
+ylab="standard deviation of the maximum distance of features"
+main="standard deviation of the maximum distance of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main="Diversity indices")
+lines(x=Llist,y=shannon_results,col="red")
+lines(x=Llist,y=simpson_results,col="blue")
+legend("topleft",lty=1,legend=c("shannon diversity","simpson_diversity"),col=c("red","blue"))
+```
+
+##flatness threshold = 10 °
+```{r,include=F}
+featuresums_df <- data.frame(geoms)
+areasums_df <- data.frame(geoms)
+areamean_df <- data.frame(geoms)
+areasd_df <- data.frame(geoms)
+SImean_df <- data.frame(geoms)
+SIsd_df <- data.frame(geoms)
+MDmean_df <-data.frame(geoms)
+MDsd_df <-data.frame(geoms)
+shannon_results <- vector()
+richness_results <- vector()
+simpson_results <- vector()
+
+for (f in filelist_fl10){
+layer=unlist(strsplit(f,split=".RData"))
+load(paste(folder,f,sep=""))
+shannon_results <- c(shannon_results,shannon)
+simpson_results <- c(simpson_results,simpson)
+richness_results <- c(richness_results,richness)
+for (g in geoms){
+areasums_df[areasums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sum"]) == 0,NA,results[results$label == as.character(g),"area_sum"])
+
+featuresums_df[featuresums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"featuresum"]) == 0,NA,results[results$label == as.character(g),"featuresum"])
+
+areamean_df[areamean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_mean"]) == 0,NA,results[results$label == as.character(g),"area_mean"])
+
+areasd_df[areasd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sd"]) == 0,NA,results[results$label == as.character(g),"area_sd"])
+
+SImean_df[SImean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"SI_mean"]) == 0,NA,results[results$label == as.character(g),"SI_mean"])
+
+SIsd_df[SIsd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"SI_sd"]) == 0,NA,results[results$label == as.character(g),"SI_sd"])
+
+MDmean_df[MDmean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"MaxDist_mean"]) == 0,NA,results[results$label == as.character(g),"MaxDist_mean"])
+
+MDsd_df[MDsd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"MaxDist_sd"]) == 0,NA,results[results$label == as.character(g),"MaxDist_sd"])
+}
+}
+```
+
+```{r,echo=F}
+df=featuresums_df
+ylab="nr. of features"
+main="nr. of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,175000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areasums_df
+ylab="total area in m²"
+main="total area of landforms vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,6000000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areamean_df
+ylab="mean size of features in m²"
+main="mean size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,450),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areasd_df
+ylab="standard deviation of the size of features in m²"
+main="standard deviation of the size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SImean_df
+ylab="mean shape index of features"
+main="mean shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SIsd_df
+ylab="standard deviation of the shape index of features"
+main="standard deviation of the shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,1.6),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+df=MDmean_df
+ylab="mean maximum distance of features"
+main="mean maximum distanve of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,16),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=MDsd_df
+ylab="standard deviation of the maximum distance of features"
+main="standard deviation of the maximum distance of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main="Diversity indices")
+lines(x=Llist,y=shannon_results,col="red")
+lines(x=Llist,y=simpson_results,col="blue")
+legend("topleft",lty=1,legend=c("shannon diversity","simpson_diversity"),col=c("red","blue"))
+```
+
+##flatness threshold = 15 °
+```{r,include=F}
+featuresums_df <- data.frame(geoms)
+areasums_df <- data.frame(geoms)
+areamean_df <- data.frame(geoms)
+areasd_df <- data.frame(geoms)
+SImean_df <- data.frame(geoms)
+SIsd_df <- data.frame(geoms)
+MDmean_df <-data.frame(geoms)
+MDsd_df <-data.frame(geoms)
+shannon_results <- vector()
+richness_results <- vector()
+simpson_results <- vector()
+
+for (f in filelist_fl15){
+layer=unlist(strsplit(f,split=".RData"))
+load(paste(folder,f,sep=""))
+shannon_results <- c(shannon_results,shannon)
+simpson_results <- c(simpson_results,simpson)
+richness_results <- c(richness_results,richness)
+for (g in geoms){
+areasums_df[areasums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sum"]) == 0,NA,results[results$label == as.character(g),"area_sum"])
+
+featuresums_df[featuresums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"featuresum"]) == 0,NA,results[results$label == as.character(g),"featuresum"])
+
+areamean_df[areamean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_mean"]) == 0,NA,results[results$label == as.character(g),"area_mean"])
+
+areasd_df[areasd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sd"]) == 0,NA,results[results$label == as.character(g),"area_sd"])
+
+SImean_df[SImean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"SI_mean"]) == 0,NA,results[results$label == as.character(g),"SI_mean"])
+
+SIsd_df[SIsd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"SI_sd"]) == 0,NA,results[results$label == as.character(g),"SI_sd"])
+
+MDmean_df[MDmean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"MaxDist_mean"]) == 0,NA,results[results$label == as.character(g),"MaxDist_mean"])
+
+MDsd_df[MDsd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"MaxDist_sd"]) == 0,NA,results[results$label == as.character(g),"MaxDist_sd"])
+}
+}
+```
+
+```{r,echo=F}
+df=featuresums_df
+ylab="nr. of features"
+main="nr. of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,175000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areasums_df
+ylab="total area in m²"
+main="total area of landforms vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,6000000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areamean_df
+ylab="mean size of features in m²"
+main="mean size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,450),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areasd_df
+ylab="standard deviation of the size of features in m²"
+main="standard deviation of the size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SImean_df
+ylab="mean shape index of features"
+main="mean shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SIsd_df
+ylab="standard deviation of the shape index of features"
+main="standard deviation of the shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,1.6),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+df=MDmean_df
+ylab="mean maximum distance of features"
+main="mean maximum distanve of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,16),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=MDsd_df
+ylab="standard deviation of the maximum distance of features"
+main="standard deviation of the maximum distance of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main="Diversity indices")
+lines(x=Llist,y=shannon_results,col="red")
+lines(x=Llist,y=simpson_results,col="blue")
+legend("topleft",lty=1,legend=c("shannon diversity","simpson_diversity"),col=c("red","blue"))
+```
+
+##flatness threshold = 20 °
+```{r,include=F}
+featuresums_df <- data.frame(geoms)
+areasums_df <- data.frame(geoms)
+areamean_df <- data.frame(geoms)
+areasd_df <- data.frame(geoms)
+SImean_df <- data.frame(geoms)
+SIsd_df <- data.frame(geoms)
+MDmean_df <-data.frame(geoms)
+MDsd_df <-data.frame(geoms)
+shannon_results <- vector()
+richness_results <- vector()
+simpson_results <- vector()
+
+for (f in filelist_fl20){
+layer=unlist(strsplit(f,split=".RData"))
+load(paste(folder,f,sep=""))
+shannon_results <- c(shannon_results,shannon)
+simpson_results <- c(simpson_results,simpson)
+richness_results <- c(richness_results,richness)
+for (g in geoms){
+areasums_df[areasums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sum"]) == 0,NA,results[results$label == as.character(g),"area_sum"])
+
+featuresums_df[featuresums_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"featuresum"]) == 0,NA,results[results$label == as.character(g),"featuresum"])
+
+areamean_df[areamean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_mean"]) == 0,NA,results[results$label == as.character(g),"area_mean"])
+
+areasd_df[areasd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"area_sd"]) == 0,NA,results[results$label == as.character(g),"area_sd"])
+
+SImean_df[SImean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"SI_mean"]) == 0,NA,results[results$label == as.character(g),"SI_mean"])
+
+SIsd_df[SIsd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"SI_sd"]) == 0,NA,results[results$label == as.character(g),"SI_sd"])
+
+MDmean_df[MDmean_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"MaxDist_mean"]) == 0,NA,results[results$label == as.character(g),"MaxDist_mean"])
+
+MDsd_df[MDsd_df$geoms == as.character(g),as.character(layer)] <-ifelse(length(results[results$label == as.character(g),"MaxDist_sd"]) == 0,NA,results[results$label == as.character(g),"MaxDist_sd"])
+}
+}
+```
+
+```{r,echo=F}
+df=featuresums_df
+ylab="nr. of features"
+main="nr. of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,175000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areasums_df
+ylab="total area in m²"
+main="total area of landforms vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,6000000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areamean_df
+ylab="mean size of features in m²"
+main="mean size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,450),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=areasd_df
+ylab="standard deviation of the size of features in m²"
+main="standard deviation of the size of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50000),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SImean_df
+ylab="mean shape index of features"
+main="mean shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=SIsd_df
+ylab="standard deviation of the shape index of features"
+main="standard deviation of the shape index of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,1.6),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+df=MDmean_df
+ylab="mean maximum distance of features"
+main="mean maximum distanve of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,16),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+
+```{r,echo=F}
+df=MDsd_df
+ylab="standard deviation of the maximum distance of features"
+main="standard deviation of the maximum distance of features vs. search radius"
+names(df) <- c("geoms",Llist)
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,50),main=main,ylab=ylab,xlab="search radius")
+legend("topright",lty=1,legend = geomdf$geoms,col=as.character(geomdf$col),ncol=3)
+for (g in geoms){
+try(lines(x=Llist,y=df[df$geoms == as.character(g),2:ncol(df)],col=as.character(geomdf[geomdf$geoms==as.character(g),"col"])))
+}
+```
+
+```{r,echo=F}
+plot(x=1,type="n",xlim=c(0,max(Llist)),ylim=c(0,2),main="Diversity indices")
+lines(x=Llist,y=shannon_results,col="red")
+lines(x=Llist,y=simpson_results,col="blue")
+legend("topleft",lty=1,legend=c("shannon diversity","simpson_diversity"),col=c("red","blue"))
+```
+
