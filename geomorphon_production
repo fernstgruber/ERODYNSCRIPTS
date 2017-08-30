@@ -1,0 +1,14 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
+##################################needs grass7.0 with r.geomorphons-extension################
+import os
+dtm='dtm'
+fl=5
+#Llist=[3,15,25,50,100,250]
+#Llist=[10,20,30,40,75,125,150,200]
+Llist=[3]
+for L in Llist:
+	#os.system('r.geomorphon dem=%s forms=geom_%s_L%im_fl%i search=%i flat=%i'%(dtm,dtm,L,fl,L,fl))
+	os.system('r.to.vect input=geom_%s_L%im_fl%i output=geom_%s_L%im_fl%i type=area'%(dtm,L,fl,dtm,L,fl))
+	os.system('v.out.ogr -e input=geom_%s_L%im_fl%i output=/media/fabs/Volume/ERODYN/ERODYN_GIS/outshapes/geom_%s_L%im_fl%i.shp'%(dtm,L,fl,dtm,L,fl))

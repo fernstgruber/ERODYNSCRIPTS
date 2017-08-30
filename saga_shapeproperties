@@ -1,0 +1,31 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
+
+
+import sys
+import os
+import fnmatch
+import time
+import math
+
+allTime = time.time()
+for file in os.listdir('.'):
+	if fnmatch.fnmatch(file, '*.shp'):
+		print "\nnext computation:", file
+		basename=os.path.splitext(file)[0]
+		outname=basename.replace(" ","")
+		outname=basename.replace("-","m")
+		ModuleTime = time.time()
+		cmd="saga_cmd shapes_polygons 7 -SHAPES=%s.shp" %(outname)
+		os.system(cmd)
+		Now = time.time()
+		min = int(math.floor((Now-ModuleTime)/60))
+		sec = (Now-ModuleTime)-(min*60)
+		print "\nElapsed time [shape indices]:", min, " minutes // ", sec , " seconds!"
+Now = time.time()
+min = int(math.floor((Now-allTime)/60))
+sec = (Now-allTime)-(min*60)
+print "\nElapsed time [shape indices for all shapeifiles in folder]: ", min, " minutes // ", sec , " seconds!"
+print "Done!"
+

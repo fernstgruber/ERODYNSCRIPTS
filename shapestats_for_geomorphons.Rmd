@@ -1,0 +1,63 @@
+---
+title: "erodyn_geomorphons_shapestats"
+author: "fabian gruber"
+date: "August 25, 2017"
+output: html_document
+---
+
+```{r, include=FALSE}
+require(rgdal)
+```
+
+```{r,include=T}
+folder="/home/fabs/Data/ERODYN_lenny/ERODYN_GIS/outshapes_withshapeindex/"
+filelist <- list.files(folder,pattern="\\.shp")
+#nochzuerledigen <- c("geom_dtm_L3m_fl10.shp","geom_dtm_L3m_fl15.shp","geom_dtm_L3m_fl1.shp","geom_dtm_L3m_fl3.shp","geom_dtm_L3m_fl5.shp",
+#                     "geom_dtm_L15m_fl10.shp","geom_dtm_L15m_fl15.shp","geom_dtm_L15m_fl1.shp","geom_dtm_L15m_fl3.shp","geom_dtm_L15m_fl5.shp",
+#                     "geom_dtm_L25m_fl10.shp","geom_dtm_L25m_fl15.shp","geom_dtm_L25m_fl1.shp","geom_dtm_L25m_fl3.shp","geom_dtm_L25m_fl5.shp",
+#                     "geom_dtm_L50m_fl10.shp","geom_dtm_L50m_fl15.shp","geom_dtm_L50m_fl1.shp","geom_dtm_L50m_fl3.shp","geom_dtm_L50m_fl5.shp",
+#                     "geom_dtm_L100m_fl10.shp","geom_dtm_L100m_fl15.shp","geom_dtm_L100m_fl1.shp","geom_dtm_L100m_fl3.shp","geom_dtm_L100m_fl5.shp",
+#                     "geom_dtm_L250m_fl10.shp","geom_dtm_L250m_fl15.shp","geom_dtm_L250m_fl1.shp","geom_dtm_L250m_fl3.shp","geom_dtm_L250m_fl5.shp")
+
+for (f in filelist){
+print(paste("#############################################################"))
+print(paste("#####    ",f,sep=""))  
+print(paste("#############################################################"))
+layer=unlist(strsplit(f,split=".shp"))
+tempshape <- readOGR(paste(folder,f,sep=""),layer=layer)
+results <- as.data.frame(table(tempshape$label))
+names(results) <- c("label","featuresum")
+areasumtable <- aggregate(data=tempshape,Area~label,FUN=sum)
+names(areasumtable) <- c("label","area_sum")
+areameantable <- aggregate(data=tempshape,Area~label,FUN=mean)
+names(areameantable) <- c("label","area_mean")
+areasdtable <- aggregate(data=tempshape,Area~label,FUN=sd)
+names(areasdtable) <- c("label","area_sd")
+A = sum(areasumtable$area_sum)
+areasumtable$proportion <- areasumtable$area_sum/A
+areasumtable$shannonpart <- areasumtable$proportion*(-log(areasumtable$proportion))
+shannon <- sum(areasumtable$shannonpart)
+richness = nrow(results)
+simpson = sum(areasumtable$proportion**2)
+print(paste("Richness =",richness))
+print(paste("Shannon diversity =",shannon))
+print(paste("Simpson index =",simpson))
+
+SImeantable <- aggregate(data=tempshape,Shape.Index~label,FUN=mean)
+names(SImeantable) <- c("label","SI_mean")
+SIsdtable <- aggregate(data=tempshape,Shape.Index~label,FUN=sd)
+names(SIsdtable) <- c("label","SI_sd")
+Maxdistmeantable <- aggregate(data=tempshape,Max.Distanc~label,FUN=mean)
+names(Maxdistmeantable) <- c("label","MaxDist_mean")
+Maxdistsdtable <- aggregate(data=tempshape,Max.Distanc~label,FUN=sd)
+names(Maxdistsdtable) <- c("label","MaxDist_sd")
+
+
+for ( i in list(areasumtable,areameantable,areasdtable,SImeantable,SIsdtable,Maxdistmeantable,Maxdistsdtable)){
+  results <- merge(results,i,by="label",all.x=T)
+}
+print(results)
+save(results,richness,simpson,shannon,file=paste("/home/fabs/Data/ERODYN_lenny/ERODYN_GIS/RData_stats2/",layer,".RData",sep=""))
+}
+```
+
