@@ -5,7 +5,7 @@ date: "September 11, 2017"
 output: html_document
 ---
 
-```{r setup,include=TRUE}
+```{r setup,include=FALSE}
 require(rgrass7)
 load(file="/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/temporlarge/geo_df.RData")
 bodenbedeckung <- c("Boeschung","Brachland","Fels","Felsgebiet","SchneefeldGletscher","SchotterfeldGeroellhalde","WeideWieseAlm")
@@ -16,12 +16,17 @@ terrain <- c("aspect_25m","dtm_25m_avg","pcurvature_25m","slope_25m","tcurvature
 
 bb=bodenbedeckung[1]
 tp=terrain[1]
-#for (bb in bodenbedeckung){
-#  for (tp in terrain){
+for (bb in bodenbedeckung){
+  for (tp in terrain){
     tempdf <- geo_df[!is.na(geo_df[[bb]]),]
-    tempdf$Beschreibung_geologie <- droplevels(tempdf$Beschreibung_geologie)
-    table(tempdf$Beschreibung_geologie)
-#  }
-#}
+    tempdf$geoleg <- droplevels(tempdf$geoleg)
+    df <- (as.data.frame(table(tempdf$geoleg)))
+    barplot(height = df$Freq,names.arg = df$Var1,las=2,cex.names=0.5,main=as.character(bb))
+    hist(tempdf$slope_25m,breaks=c(0,2,5,10,20,30,45,90))
+    tempdf$Neigungsklassencode <- cut(tempdf$slope_25m,breaks = c(0,2,5,10,20,30,45,90),include.lowest = TRUE,labels=FALSE)
+tempdf$Neigungsklassengrenzen <- cut(tempdf$slope_25m,breaks = c(0,2,5,10,20,30,45,90),include.lowest = TRUE)
+barplot(height=as.data.frame(table(tempdf$Neigungklassengrenzen))$Freq)
+  }
+}
 ```
 
