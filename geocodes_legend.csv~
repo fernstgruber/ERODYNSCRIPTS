@@ -1,0 +1,253 @@
+code	geoleg	Grobeinteiluung	Beschreibung_geologie	Grossgruppen
+0		QUARTÄR	Seen und Gletscher	QUARTÄR
+11001	1.1.a	QUARTÄR	Rezente fluviatile Sedimente: Alluvionen (rezent und aktiv, teilweise Terrassen)	QUARTÄR
+11002	1.1.b	QUARTÄR	Schwemmkegel	QUARTÄR
+12001	1.2.a	QUARTÄR	Hang- und Verwitterungsschutt	QUARTÄR
+12002	1.2.b	QUARTÄR	Schuttkegel	QUARTÄR
+12003	1.2.c	QUARTÄR	???	QUARTÄR
+13000	1.3.	QUARTÄR	Glaziale Sedimente	QUARTÄR
+13001	1.3.a	QUARTÄR	Moräne i. allg., Moränenwall, Blockgletscher, 	QUARTÄR
+13002	1.3.b	QUARTÄR	gemischte Moränen mit großen Blöcken	QUARTÄR
+14000	1.4.	QUARTÄR	Alte Fluviatile Sedimente: Alluvionen, mehr oder weniger verfestigt (zementiert), Terrassensedimente, gewöhnlich unter den Würmmoränen (wahrscheinlich RISS-Würm INTERGLAZIAL) liegend, nach unten Übergang zu kiesigen und siltig-sandigen fluvioglazialen Ablagerungen (wahrscheinlich HOCHGLAZIAL-RISS)	QUARTÄR
+15000	1.5.	QUARTÄR	Bergsturz	Spätvariskische Intrusivkörper
+21010	2.1.1	SÜDALPIN	Biotitgranite bis Granodiorite + Tonalite und Quarzdiorite	Spätvariskische Intrusivkörper
+21012	2.1.1.b	SÜDALPIN	Tonalite und Quarzdiorite mit orientiertem Gefüge (Randfazies).	Spätvariskische Intrusivkörper
+21020	2.1.2	SÜDALPIN	Quarzdiorite + Gabbros	Spätvariskische Intrusivkörper
+21031	2.1.3.a	SÜDALPIN	Gänge unterschiedlicher Zusammensetzung (von granitisch, granodioritisch, tonalitisch, aplitisch bis pegmatitisch)	Spätvariskische Intrusivkörper
+21032	2.1.3.b	SÜDALPIN	porphyritische, Hornblende und/oder Augit führende Gänge	Spätvariskische Intrusivkörper
+22010	2.2.1	SÜDALPIN	Quarzphyllite + dunkle graphitische Phyllite und Quarzite	Variskisch metamorphes Grundgebirge
+22012	2.2.1.b	SÜDALPIN	dunkle graphitische Phyllite und Quarzite.	Variskisch metamorphes Grundgebirge
+22020	2.2.2.	SÜDALPIN	„Porphyroide“ im weitesten Sinne, Albitgneis, häufig mit K-Feldspat, feinkörnige Augengneise.	Variskisch metamorphes Grundgebirge
+22031	2.2.3.a	SÜDALPIN	Grünschiefer	Variskisch metamorphes Grundgebirge
+22032	2.2.3.b	SÜDALPIN	Amphibolite	Variskisch metamorphes Grundgebirge
+22041	2.2.4.a	SÜDALPIN	Einschaltung von ± metamorphen Karbonatkörpern	Variskisch metamorphes Grundgebirge
+22050	2.2.5.	SÜDALPIN	Quarzite	Variskisch metamorphes Grundgebirge
+31010	3.1.1.	OSTALPIN	Granodiorite, Tonalite und untergeordnet Granite und Diorite des Rensen, Hochhorn, Zinsnock und Rieserferner Plutons inkl. kleinerer Körper.	Periadriatische Plutone innerhalb des Ostalpins (OLIGOZÄN)
+31031	3.1.3.a	OSTALPIN	Gänge, v.a. saurer Zusammensetzung	Periadriatische Plutone innerhalb des Ostalpins (OLIGOZÄN)
+31032	3.1.3.b	OSTALPIN	basische Gänge	Periadriatische Plutone innerhalb des Ostalpins (OLIGOZÄN)
+32010	3.2.1.	OSTALPIN	Undifferenzierte Sedimentbedeckung, mehr oder minder von der kretazischen Metamorphose erfasst: kristalline Kalke und Dolomite, graphitische Phyllite, pelitisch-psammitische Schiefer, graphitische Quarzite (PERMO-MESOZOIKUM).	Zentralalpines Mesozoikum (Tribulaun-Telfer Weißen, Ortler, Scharl, Sesvenna, Endkopf-Piz Lad-Rojen)
+33010	3.3.1.	OSTALPIN	Undifferenzierte Sedimentbedeckung: Quarzite und psephitisch-psammitische Schiefer (PERM-EOTRIAS); kristalline Kalke und Dolomite; Kalkschiefer, Anhydrite (ANIS-LADIN).	Komplex von Mauls-Stilfes-Weißhorn (PERMO-MESOZOIKUM)
+34010	3.4.1.	OSTALPIN	Quarzphyllite, manchmal graphitisch u/o karbonatführend, grau-schwarz, nicht selten diaphtoritisch, untergeordnet graue ± glimmerführende Quarzite. 	Steinacher und Thurntaler Quarzphyllit (ALTPALÄOZOIKUM)
+34020	3.4.2.	OSTALPIN	Marmore.	Steinacher und Thurntaler Quarzphyllit (ALTPALÄOZOIKUM)
+35010	3.5.1.	OSTALPIN	phyllitische Glimmerschiefer	Schneeberger Zug (ALTPALÄOZOIKUM)
+35020	3.5.2.	OSTALPIN	Muskowit-Paragonit führende phyllitische Glimmerschiefer mit sehr großen Granaten; karbonatführende Glimmerschiefer mit gutausgebildeten Muskowitporphyroblasten.	Schneeberger Zug (ALTPALÄOZOIKUM)
+35030	3.5.3.	OSTALPIN	Kalkige Schiefer, Marmore	Schneeberger Zug (ALTPALÄOZOIKUM)
+35040	3.5.4.	OSTALPIN	Amphibolite, Granatamphibolite, Hornblendegneise; Hornblendeschiefer, Hornblendegarbenschiefer.	Schneeberger Zug (ALTPALÄOZOIKUM)
+35050	3.5.5.	OSTALPIN	Quarzite.	Schneeberger Zug (ALTPALÄOZOIKUM)
+36010	3.6.1.	OSTALPIN	Granatphyllite, Quarzphyllite	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36020	3.6.2.	OSTALPIN	Phyllonitische Glimmerschiefer und flaserige Phyllite mit Paragneiszwischenlagen	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36030	3.6.3.	OSTALPIN	Feinkörnige Paragneise mit ebener Schieferung; Muskowit und Granat führende Glimmerschiefer und Gneise.	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36040	3.6.4.	OSTALPIN	Flaserige unregelmässig geschieferte Glimmerschiefer, reich an Granat-, Staurolith- und Disthen-Porphyroblasten. 	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36050	3.6.5.	OSTALPIN	Quarzite, mehr oder weniger glimmerführend. 	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36060	3.6.6.	OSTALPIN	Marmore	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36070	3.6.7.	OSTALPIN	Amphibolite und Granatamphibolite + Eklogite + Peridotite	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36071	3.6.7.a	OSTALPIN	Amphibolite und Granatamphibolite, Epidotamphibolite, Epidot-Biotit-Amphibolite, Hornblendegneise	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36080	3.6.8.	OSTALPIN	Aplitische und pegmatitische Gneise.	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36090	3.6.9.	OSTALPIN	Muskowit führende Granitgneise oder Muskowit-Biotit-Granitgneise, oft mit deutlich sichtbaren hypidiomorphen Feldspatkristallen (Antholzer Gneis). 	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36100	3.6.10.	OSTALPIN	Dioritisch-tonalitische Gneise mit Biotit u/o Hornblende (Gsieser Gneis). 	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36110	3.6.11.	OSTALPIN	Augengneise	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36111	3.6.11.a	OSTALPIN	Augengneise mit Biotit oder Biotit und Muskowit (Texelspitz-Gneis), deutlich geschiefert (Tauferer-Gneis), leukokrate Zwischenlagen	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36112	3.6.11.b	OSTALPIN	Mylonitische Augengneise	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36113	3.6.11.c	OSTALPIN	Karbonatführender Phyllitgneis und Muskovitgranitgneis am Vinschger Sonnenberg	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36120	3.6.12.	OSTALPIN	Hauptmylonitzonen.	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+36130	3.6.13.	OSTALPIN	Grünschiefer.	Prävariszisches und variszisches Grundgebirge des Meran-Mauls-Antholz-Komplexes, Ötztal-Stubai-, Campo-, Umbrail-Chavalatsch-Kristallins
+41000	4.1.	MATREIER SCHUPPENZONE	Kalkschiefer und dunkle Kalke (JURA-UNTERKREIDE?)	MATREIER SCHUPPENZONE
+42000	4.2.	MATREIER SCHUPPENZONE	Kalk- und Dolomitmarmore (MITTEL-OBER-TRIAS)	MATREIER SCHUPPENZONE
+43000	4.3.	MATREIER SCHUPPENZONE	Weise Quarzite mit plattigem Gefüge (OBERPERM-UNTERTRIAS)	MATREIER SCHUPPENZONE
+44000	4.4.	MATREIER SCHUPPENZONE	Phyllitische Glimmerschiefer und glimmerführende Phyllite. 	MATREIER SCHUPPENZONE
+45000	4.5.	MATREIER SCHUPPENZONE	Serpentitnite	MATREIER SCHUPPENZONE
+46000	4.6.	MATREIER SCHUPPENZONE	Prasinite, Chloritschiefer. 	MATREIER SCHUPPENZONE
+51010	5.1.1.	PENNINIKUM	Kalkschiefer, wechsellagernd mit phyllitischen Glimmerschiefern; schwarze graphitische Schiefer, manchmal granatführend, arm bis frei an Karbonaten; Zwischenlagen von grauen Quarziten; typische Kalkschiefer mit Übergang zu Marmoren; grau-bläuliche Marmore; Glimmerschiefer und Biotitgneise mit Glimmerquarziten im Hangenden der Ophiolithe.	Obere Schieferhülle (Kalkschiefer mit Ophiolithen) der Hohen Tauern (JURA, U-KREIDE?)
+51020	5.1.2.	PENNINIKUM	Hornblendeführende Prasinite und Amphibolithe mit ± Epidot und Biotit. 	Obere Schieferhülle (Kalkschiefer mit Ophiolithen) der Hohen Tauern (JURA, U-KREIDE?)
+51030	5.1.3.	PENNINIKUM	Serpentinite mit reliktischen Pyroxenen, Chloritschiefer und Talkschiefer; Ophikalzite und Silikatmarmore vergesellschaftet mit Serpentiniten. 	Obere Schieferhülle (Kalkschiefer mit Ophiolithen) der Hohen Tauern (JURA, U-KREIDE?)
+51040	5.1.4.	PENNINIKUM	Weiße oder gelbliche Phlogopit-Marmore, manchmal gebändert, Kalkschiefer mit Zwischenschaltungen von weißen und gelblichen Dolomitmarmoren.	Obere Schieferhülle (Kalkschiefer mit Ophiolithen) der Hohen Tauern (JURA, U-KREIDE?)
+52010	5.2.1.	PENNINIKUM	Gelbliche - weiße Dolomitmarmore („Pfitscher Dolomit“ auct.); Rauhwacken (Kalkwandstange), bläulich graue Marmore; weiße oder graue Marmore, manchmal gebändert („Tuxer Marmor“ auct.). M-O-TRIAS-JURA.	Greiner und Pfitschtaler Komplex
+52020	5.2.2.	PENNINIKUM	Kompakte weiße Quarzite; geschieferte Muskowitquarzite; Quarzitgneise; dunkle Quarzite, manchmal mit hellen Bändern. U-TRIAS?	Greiner und Pfitschtaler Komplex
+52030	5.2.3.	PENNINIKUM	Arkosegneise mit Muskowit, Biotit, und Karbonat führend, flaserige Granatglimmerschiefer und Flasergneise. PERM-U-TRIAS.	Greiner und Pfitschtaler Komplex
+52050	5.2.5.	PENNINIKUM	Dunkelgraue – schwarze graphitische Granatglimmerschiefer mit feinen Wechsellagerungen von Paragneisen, dünnen Lagen feinkörniger Konglomeratgneise und dunklen Marmoren; Disthenschiefer (Rhätizit) des Wolfendorn. PERM-KARBON.	Greiner und Pfitschtaler Komplex
+53010	5.3.1.	PENNINIKUM	Granit- und Granodioritgneise	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)
+53020	5.3.2.	PENNINIKUM	Hornblendegneise und Amphibolite mit gneisigem Gefüge	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)
+53030	5.3.3.	PENNINIKUM	Biotitglimmerschiefer, in reliktischen Linsen, manchmal mit Granat oder Karbonat; Chlorit-Biotitparagneise, Amphibolite mit gneisigem Gefüge, Biotit- oder Chloritamphibolite; zwischengelagerte Schiefer verschiedener Typen. 	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)
+53040	5.3.4.	PENNINIKUM	Marmore	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)
+53050	5.3.5.	PENNINIKUM	Quarzite	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)
+53060	5.3.6.	PENNINIKUM	Aplitische Gneise	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)
+53070	5.3.7.	PENNINIKUM	Amphibol führende Prasinite und Amphibolite mit ± Epidot und Biotit. 	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)
+53080	5.3.8.	PENNINIKUM	Gänge aus Dioritgneisen und Gabbrodioritgneisen. 	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)
+				
+9999			unklar/nicht zugewiesen	
+1000			Seen, Gletscher	
+1001			Seen	
+1002			Gletscher	
+1010			Kuenstliche Aufschuettungsflaechen (Deponien, Wael	
+1020			Vernaessungszone, Sumpf, Torf	
+1030			Kalksinter, Travertin	
+1040			Bergsturz; Brandungswaelle, verstreute Bergsturzbl	
+1041			rezent, hist. Bergsturz	
+1042			fossiler Bergsturz	
+1050			Hang- (5a) und Verwitterungsschutt (5b); gemischte	
+1051			Hangschutt	
+1052			Verwitterungsschutt	
+1053			gemischter Schutt (Hangschutt und Moraene)	
+1054			Rutschmassen	
+1055			Talzuschuebe	
+1060			Felssturzmaterial, Grobblockschutt	
+1070			Hangschuttkegel (7a), Murschuttkegel (7b)	
+1071			Hangschuttkegel	
+1072			Murschuttkegel	
+1073			Murenschutt mit grossen Bloecken	
+1080			Alluvionen: junge Flussablagerungen, rezente Talbo	
+1081			aktive Bach- u Flussschotter	
+1090			Flussterrassen, Bachterrassen	
+1100			Schwemmfaecher	
+1110			Gehaengebreccie	
+1120			Seesedimente	
+1130			Pleistozaene Terrassensedimente	
+1140			Konglomerierte Schotter, Kiese und Sande	
+1150			Blockgletscher: Waelle und Boeschungen	
+1160			Blockgletscher aktiv	
+1170			Blockgletscher inaktiv (undiff.)	
+1180			Moraene i. allg.	
+1190			Moraenenwaelle (End- u. Seitenmoraenen)	
+1200			Moraenenschleier	
+1210			Lokalmoraene (rezent -subrezent)	
+1220			Lokalmoraene (spaetglazial)	
+1230			Fernmoraene (Hochwuerm u. aelter)	
+1240			Col Becchei Kgl.	
+1250			Lamprophyre des Fischleintales	
+1260			Ganggesteine von Corvara	
+1270			Antruilles Flysch (Ruoibes Fm und Antruilles Fm)	
+1280			Flysch von Ra Stua	
+1290			Puezmergel (incl. Knollenkalke und Mergel, Ammonit	
+1300			Biancone	
+1310			Rosso Ammonitico (inferiore und superiore)	
+1320			Verena Fm (incl. Rhaetischer Dachsteinkalk 32a und	
+1322			Dolomitisierte Graukalke	
+1330			Fanesencrinit	
+1340			Zuckerkoernige Dolomite der Puezhochflaeche	
+1350			Hauptdolomit	
+1360			"Forni Formation (""Seefelder Schichten"")"	
+1370			Raibl Gruppe	
+1380			"Travenanzes Formation (""Plaetzwiesschichten"")"	
+1390			Heiligkreuz Formation	
+1400			"Konglomerate, Sandsteine, Schillbaenke, Mergel (""t"	
+1410			Cassian Formation	
+1411			Kassian-Kalke	
+1412			Kassian-Mergel	
+0			Wengen Gruppe	
+1420			Wengen Fm. (Wengender Schichten)	
+1430			Marmoladakonglomerat	
+1440			Fernazza Fm.	
+1450			Hyaloklastite	
+1460			Caotico eterogeneo	
+1470			Laven (Pillowlaven 47a, Lavabreccien 47b)	
+1480			Gaenge	
+0			Schlerngruppe	
+1490			Massiger Schlerndolomit mit Klinoformen (Riffhang	
+1500			Oberer, postvulkanischer Schlerndolomit (Wengener	
+1510			Unterer, praevulkanischer Schlerndolomit (Schlernd	
+1520			Geschichteter lagunaerer Schlerndolomit, undiff.	
+1530			Oberer, postvulkanischer Sehlerndolomit (incl. Due	
+1540			Unterer praevulkanischer Sehlerndolomit	
+1550			Schlernplateauschichten	
+0			Buchensteingruppe	
+1560			Aquatona Formation	
+1570			Zoppé Formation	
+1580			Buchenstein Formation	
+1590			Baenderkalk Mb	
+1600			Knollenkalk Mb	
+1610			Plattenkalk Mb	
+0			Prags-Gruppe	
+1620			Ambata Formation	
+1630			Moena Formation	
+1640			Moena Breccie	
+1650			Contrin Formation	
+1660			Morbiac Formation	
+1670			Dont Formation	
+1680			Oberer Sarldolomit	
+1690			Recoaro Formation	
+1700			Ágordo Formation	
+1710			Peresschichten undiff.	
+1720			Ob. Peresschichten (Richthofen Kgl.)	
+1730			Mittl. Peresschichten (Voltago Kgl.)	
+1740			Unt. Peresschichten (Piz da Peres Kgl.)	
+1750			Unterer Sarldolomit	
+1760			Lusnizza Formation	
+1770			Werfen Formation undiff.	
+1780			Obere Werfener Schichten	
+1790			San Lucano Mb	
+1800			Cencenighe Mb	
+1810			Val Badia Mb	
+1820			Campill Mb	
+1830			Untere Werfener Schichten (Fm)	
+1840			Gastropodenoolith	
+1850			Seis Mb	
+1860			Andraz Mb	
+1870			Mazzin Mb	
+1880			Tesero Oolith	
+1890			Bellerophon Formation	
+1900			Badiota Facies	
+1910			Fiammazza Facies	
+1920			Groeden Formation	
+1930			Sextner Konglomerat	
+1940			Tarviser Breccie	
+1950			"Etschtaler Vulkanitkomplex, undiff. (""Bozner Quarz"	
+1951			"Etschtaler Vulkanitkomplex, undiff. (""Bozner Quarz"	
+1960			Waidbrucker Konglomerat	
+1970			Kristallines Grundgebirge der Suedalpen, undiff.	
+1980			Andesite (Bozner Quarzporphyr)	
+1990			Kastelruth Porphyr	
+2000			St.Vigil Formation	
+2210			Quarzphyllit	
+2101			B-Gardenaccia Fm.	
+2102			B-Rosengarten Fm	
+2103			B-Selladolomit-Subgruppe	
+2104			B-Settsassdolomit-Mb-Topsets	
+2105			B-Stevia Mb	
+2106			B-Fedares Member	
+2107			B-Dibona Member	
+2108			B-Lagazuoi Member	
+2109			B-Pordoi Fm	
+2110			B-Falzarego Sandstein	
+2111			B-Settsassdolomit-Mb	
+2112			B-Selladolomit-Subgruppe-Topsets	
+2113			B-Rosengarten Fm-topsets	
+2114			B-Rosszaehne Fm	
+2115			B-Rosszaehne Fm-Topsets	
+2116			B-Raschuetzer Tuffe	
+2117			B-Trostburg Fm. (undiff) (TRO)	
+2118			B-Brekzie, Konglomerate (TROa)	
+2119			B-Tuffe (TROb)	
+2120			B-Laven (TROc)	
+2121			B-Kristallinfuehrende Konglomerate (TROd)	
+2122			B-Platsch-Fm. (PLA)	
+2123			B-Lieg-Fm. (LIE)	
+2124			B-Pyroklastika, Brekzien (LIEa)	
+2125			B-Gruene Tuffe (LIEb)	
+2126			B-St. Oswald-Fm. (SOW)	
+2127			B-Konglomerate, Brekzien (SOWa)	
+2128			B-St. Vigil-Fm. (SVG)	
+2129			B-Vitrophyr von Tisens (VIT)	
+2130			B-Vitrophyr (KST3)	
+2131			B-St. Konstantin Konglomerat (KON)	
+2132			B-Torggl Ignimbrite (TGG1)	
+2133			B-Torggl Konglomerate (TGG2)	
+2134			B-Tschamin-Mb.	
+2135			B-Exner Megabrekzien	
+3010			Tert. periad. Plutonite	
+3020			Insubr. Flysch	
+3030			Scaglia Rossa	
+3040			Basische Vulkanite	
+3050			Schlerndolomit	
+3060			Gschnon Fm	
+3070			Giovo Fm	
+3080			Gracilis Schichten	
+3090			Rhyod. u rhyol Ignimbrite	
+3100			Rhyod. u rhyol. Laven	
+3110			Vitrophyre	
+3120			Vulkaniklast. Zwischenbildungen	
+3130			Tregiovo Fm	
+3140			Dac. u rhyol. Gaenge, Subvulkane	
+3150			Andesitische u dac. Laven	
+3160			Lanaer Konglomerat	
+3170			Perm. periadr. Plutonite	
+3171			Perm peria. Plut. - Ganggefolge	

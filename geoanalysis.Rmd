@@ -1,0 +1,27 @@
+---
+title: "GEOUNDBODENDECKUNG"
+author: "fabian gruber"
+date: "September 11, 2017"
+output: html_document
+---
+
+```{r setup,include=TRUE}
+require(rgrass7)
+load(file="/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/temporlarge/geo_df.RData")
+bodenbedeckung <- c("Boeschung","Brachland","Fels","Felsgebiet","SchneefeldGletscher","SchotterfeldGeroellhalde","WeideWieseAlm")
+terrain <- c("aspect_25m","dtm_25m_avg","pcurvature_25m","slope_25m","tcurvature_25m")
+```
+
+```{r plots,echo=FALSE}
+
+bb=bodenbedeckung[1]
+tp=terrain[1]
+#for (bb in bodenbedeckung){
+#  for (tp in terrain){
+    tempdf <- geo_df[!is.na(geo_df[[bb]]),]
+    tempdf$Beschreibung_geologie <- droplevels(tempdf$Beschreibung_geologie)
+    table(tempdf$Beschreibung_geologie)
+#  }
+#}
+```
+

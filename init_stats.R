@@ -7,6 +7,7 @@ myfunctions <- getURL("https://raw.githubusercontent.com/fernstgruber/Rstuff/mas
 eval(parse(text = myfunctions))
 geolegend <- read.table(text=getURL("https://raw.githubusercontent.com/fernstgruber/ERODYNSCRIPTS/master/geocodes_legend.csv"),sep="\t",header=T)
 geolegend <- geolegend[1:74,]
+geolegend <- droplevels(geolegend)
 gisBase="/usr/local/src/grass70_release/dist.x86_64-unknown-linux-gnu"
 gisDbase =  "/media/fabs/Volume/Data/GRASSDATA/"
 location="epsg25832"
@@ -16,3 +17,9 @@ geo_df<- readRAST("geo50_25m")@data
 geo_df$UID <- 1:nrow(geo_df)
 geo_df <- merge(geo_df,geolegend,by.x="geo50_25m",by.y="code",all.x=T)
 geo_df<- geo_df[order(geo_df$UID,decreasing = F),]
+bodenbedeckung <- c("Boeschung","Brachland","Fels","Felsgebiet","SchneefeldGletscher","SchotterfeldGeroellhalde","WeideWieseAlm")
+terrain <- c("aspect_25m","dtm_25m_avg","pcurvature_25m","slope_25m","tcurvature_25m")
+for (rast in c(bodenbedeckung,terrain)){
+ geo_df[[rast]] <- readRAST(rast)@data[[rast]]
+}
+save(geo_df,file="/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/temporlarge/geo_df.RData")
