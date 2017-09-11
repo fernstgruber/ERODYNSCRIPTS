@@ -73,3 +73,181 @@ code	geoleg	Grobeinteiluung	Beschreibung_geologie	Grossgruppen	beschreibung_kurz
 53060	5.3.6.	PENNINIKUM	Aplitische Gneise	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)	Aplitische Gneise	
 53070	5.3.7.	PENNINIKUM	Amphibol führende Prasinite und Amphibolite mit ± Epidot und Biotit. 	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)	Amphibol führende Prasinite und Amphibolite
 53080	5.3.8.	PENNINIKUM	Gänge aus Dioritgneisen und Gabbrodioritgneisen. 	Tuxer - Großvenediger Komplex (Granit-/Gneiskern)	Gänge aus Dioritgneisen und Gabbrodioritgneisen
+				
+9999			unklar/nicht zugewiesen	
+1000			Seen, Gletscher	
+1001			Seen	
+1002			Gletscher	
+1010			Kuenstliche Aufschuettungsflaechen (Deponien, Wael	
+1020			Vernaessungszone, Sumpf, Torf	
+1030			Kalksinter, Travertin	
+1040			Bergsturz; Brandungswaelle, verstreute Bergsturzbl	
+1041			rezent, hist. Bergsturz	
+1042			fossiler Bergsturz	
+1050			Hang- (5a) und Verwitterungsschutt (5b); gemischte	
+1051			Hangschutt	
+1052			Verwitterungsschutt	
+1053			gemischter Schutt (Hangschutt und Moraene)	
+1054			Rutschmassen	
+1055			Talzuschuebe	
+1060			Felssturzmaterial, Grobblockschutt	
+1070			Hangschuttkegel (7a), Murschuttkegel (7b)	
+1071			Hangschuttkegel	
+1072			Murschuttkegel	
+1073			Murenschutt mit grossen Bloecken	
+1080			Alluvionen: junge Flussablagerungen, rezente Talbo	
+1081			aktive Bach- u Flussschotter	
+1090			Flussterrassen, Bachterrassen	
+1100			Schwemmfaecher	
+1110			Gehaengebreccie	
+1120			Seesedimente	
+1130			Pleistozaene Terrassensedimente	
+1140			Konglomerierte Schotter, Kiese und Sande	
+1150			Blockgletscher: Waelle und Boeschungen	
+1160			Blockgletscher aktiv	
+1170			Blockgletscher inaktiv (undiff.)	
+1180			Moraene i. allg.	
+1190			Moraenenwaelle (End- u. Seitenmoraenen)	
+1200			Moraenenschleier	
+1210			Lokalmoraene (rezent -subrezent)	
+1220			Lokalmoraene (spaetglazial)	
+1230			Fernmoraene (Hochwuerm u. aelter)	
+1240			Col Becchei Kgl.	
+1250			Lamprophyre des Fischleintales	
+1260			Ganggesteine von Corvara	
+1270			Antruilles Flysch (Ruoibes Fm und Antruilles Fm)	
+1280			Flysch von Ra Stua	
+1290			Puezmergel (incl. Knollenkalke und Mergel, Ammonit	
+1300			Biancone	
+1310			Rosso Ammonitico (inferiore und superiore)	
+1320			Verena Fm (incl. Rhaetischer Dachsteinkalk 32a und	
+1322			Dolomitisierte Graukalke	
+1330			Fanesencrinit	
+1340			Zuckerkoernige Dolomite der Puezhochflaeche	
+1350			Hauptdolomit	
+1360			Forni Formation (eefelder Schichten)	
+1370			Raibl Gruppe	
+1380			Travenanzes Formation (Plaetzwiesschichten)	
+1390			Heiligkreuz Formation	
+1400			Konglomerate, Sandsteine, Schillbaenke, Mergel 	
+1410			Cassian Formation	
+1411			Kassian-Kalke	
+1412			Kassian-Mergel	
+0			Wengen Gruppe	
+1420			Wengen Fm. (Wengender Schichten)	
+1430			Marmoladakonglomerat	
+1440			Fernazza Fm.	
+1450			Hyaloklastite	
+1460			Caotico eterogeneo	
+1470			Laven (Pillowlaven 47a, Lavabreccien 47b)	
+1480			Gaenge	
+0			Schlerngruppe	
+1490			Massiger Schlerndolomit mit Klinoformen (Riffhang	
+1500			Oberer, postvulkanischer Schlerndolomit (Wengener	
+1510			Unterer, praevulkanischer Schlerndolomit (Schlernd	
+1520			Geschichteter lagunaerer Schlerndolomit, undiff.	
+1530			Oberer, postvulkanischer Sehlerndolomit (incl. Due	
+1540			Unterer praevulkanischer Sehlerndolomit	
+1550			Schlernplateauschichten	
+0			Buchensteingruppe	
+1560			Aquatona Formation	
+1570			Zoppé Formation	
+1580			Buchenstein Formation	
+1590			Baenderkalk Mb	
+1600			Knollenkalk Mb	
+1610			Plattenkalk Mb	
+0			Prags-Gruppe	
+1620			Ambata Formation	
+1630			Moena Formation	
+1640			Moena Breccie	
+1650			Contrin Formation	
+1660			Morbiac Formation	
+1670			Dont Formation	
+1680			Oberer Sarldolomit	
+1690			Recoaro Formation	
+1700			Ágordo Formation	
+1710			Peresschichten undiff.	
+1720			Ob. Peresschichten (Richthofen Kgl.)	
+1730			Mittl. Peresschichten (Voltago Kgl.)	
+1740			Unt. Peresschichten (Piz da Peres Kgl.)	
+1750			Unterer Sarldolomit	
+1760			Lusnizza Formation	
+1770			Werfen Formation undiff.	
+1780			Obere Werfener Schichten	
+1790			San Lucano Mb	
+1800			Cencenighe Mb	
+1810			Val Badia Mb	
+1820			Campill Mb	
+1830			Untere Werfener Schichten (Fm)	
+1840			Gastropodenoolith	
+1850			Seis Mb	
+1860			Andraz Mb	
+1870			Mazzin Mb	
+1880			Tesero Oolith	
+1890			Bellerophon Formation	
+1900			Badiota Facies	
+1910			Fiammazza Facies	
+1920			Groeden Formation	
+1930			Sextner Konglomerat	
+1940			Tarviser Breccie	
+1950			Etschtaler Vulkanitkomplex, undiff. (Bozner Quarz	
+1951			Etschtaler Vulkanitkomplex, undiff. (Bozner Quarz	
+1960			Waidbrucker Konglomerat	
+1970			Kristallines Grundgebirge der Suedalpen, undiff.	
+1980			Andesite (Bozner Quarzporphyr)	
+1990			Kastelruth Porphyr	
+2000			St.Vigil Formation	
+2210			Quarzphyllit	
+2101			B-Gardenaccia Fm.	
+2102			B-Rosengarten Fm	
+2103			B-Selladolomit-Subgruppe	
+2104			B-Settsassdolomit-Mb-Topsets	
+2105			B-Stevia Mb	
+2106			B-Fedares Member	
+2107			B-Dibona Member	
+2108			B-Lagazuoi Member	
+2109			B-Pordoi Fm	
+2110			B-Falzarego Sandstein	
+2111			B-Settsassdolomit-Mb	
+2112			B-Selladolomit-Subgruppe-Topsets	
+2113			B-Rosengarten Fm-topsets	
+2114			B-Rosszaehne Fm	
+2115			B-Rosszaehne Fm-Topsets	
+2116			B-Raschuetzer Tuffe	
+2117			B-Trostburg Fm. (undiff) (TRO)	
+2118			B-Brekzie, Konglomerate (TROa)	
+2119			B-Tuffe (TROb)	
+2120			B-Laven (TROc)	
+2121			B-Kristallinfuehrende Konglomerate (TROd)	
+2122			B-Platsch-Fm. (PLA)	
+2123			B-Lieg-Fm. (LIE)	
+2124			B-Pyroklastika, Brekzien (LIEa)	
+2125			B-Gruene Tuffe (LIEb)	
+2126			B-St. Oswald-Fm. (SOW)	
+2127			B-Konglomerate, Brekzien (SOWa)	
+2128			B-St. Vigil-Fm. (SVG)	
+2129			B-Vitrophyr von Tisens (VIT)	
+2130			B-Vitrophyr (KST3)	
+2131			B-St. Konstantin Konglomerat (KON)	
+2132			B-Torggl Ignimbrite (TGG1)	
+2133			B-Torggl Konglomerate (TGG2)	
+2134			B-Tschamin-Mb.	
+2135			B-Exner Megabrekzien	
+3010			Tert. periad. Plutonite	
+3020			Insubr. Flysch	
+3030			Scaglia Rossa	
+3040			Basische Vulkanite	
+3050			Schlerndolomit	
+3060			Gschnon Fm	
+3070			Giovo Fm	
+3080			Gracilis Schichten	
+3090			Rhyod. u rhyol Ignimbrite	
+3100			Rhyod. u rhyol. Laven	
+3110			Vitrophyre	
+3120			Vulkaniklast. Zwischenbildungen	
+3130			Tregiovo Fm	
+3140			Dac. u rhyol. Gaenge, Subvulkane	
+3150			Andesitische u dac. Laven	
+3160			Lanaer Konglomerat	
+3170			Perm. periadr. Plutonite	
+3171			Perm peria. Plut. - Ganggefolge	
