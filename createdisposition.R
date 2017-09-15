@@ -19,9 +19,11 @@ bodenbedeckung <- c("Boeschung","Brachland","Fels","Felsgebiet","SchneefeldGlets
 terrain <- c("aspect_25m","dtm_25m_avg","pcurvature_25m","slope_25m","tcurvature_25m")
 slopethreshold=15
 gefaehrdetebodenbedeckung <- c("Brachland","Felsgebiet","WeideWieseAlm")
+bb = gefaehrdetebodenbedeckung[1]
 for (bb in gefaehrdetebodenbedeckung){
   geo_df[!is.na(geo_df[[bb]]),"bbdisp"] <-1
+  print(summary(geo_df$bbdisp))
 }
-disposition <- geo_df[geo_df$bbdisp == 1,]
+disposition <- geo_df[!is.na(geo_df[["bbdisp"]]),]
 summary(disposition)
 
