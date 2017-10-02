@@ -1,0 +1,2 @@
+#slope classification
+r.mapcalc 'slopedisposition = if( slope_25m <= 10,   0, if(slope_25m <= 20, 1, if(slope_25m <= 30, 2, if(slope_25m <= 40,3, if(slope_25m <= 50, 2, if(slope_25m <= 65, 1, if(slope_25m > 65, 0, 10)))))))'
