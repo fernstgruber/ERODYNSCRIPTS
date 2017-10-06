@@ -14,6 +14,13 @@ r.in.gdal -o input=/mnt/bola/bola/08_projekte/ERODYN/Geodata/Niederschlagkarte_M
 r.mapcalc 'annprec_disposition = if(prec_annual <= 750, 1, if(prec_annual <= 1000, 2, if(prec_annual <=1500, 3, if(prec_annual > 1500, 4, 0))))'
 ################################################################################################
 
+#Disposition based on geological units at 1:10k
+v.in.ogr input=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/geo50_utm_disposition.shp output=geodisposition
+
+
+
+################################################################################################
+
 #classification of landuse
 r.patch input=Brachland,Felsgebiet,WeideWieseAlm output=landuse_disposition
 ##HOTSPOTS

@@ -15,4 +15,6 @@ r.mapcalc 'annprec_disposition = if(prec_annual <= 750, 1, if(prec_annual <= 100
 ################################################################################################
 
 #classification of landuse
-r.mapcalc 'landuse_disposition = if(
+r.patch input=Brachland,Felsgebiet,WeideWieseAlm output=landuse_disposition
+##HOTSPOTS
+r.mapcalc 'hotspots = if((annprec_disposition==3 || annprec_disposition==4) && (slopedisposition==3),1,null())'
