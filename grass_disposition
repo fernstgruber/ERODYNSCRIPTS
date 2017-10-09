@@ -23,5 +23,10 @@ v.in.ogr input=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/geo50_utm_disposit
 
 #classification of landuse
 r.patch input=Brachland,Felsgebiet,WeideWieseAlm output=landuse_disposition
+################################################################################################
+
 ##HOTSPOTS
-r.mapcalc 'hotspots = if((annprec_disposition==3 || annprec_disposition==4) && (slopedisposition==3),1,null())'
+r.mapcalc 'hotspots = if((annprec_disposition==3 || annprec_disposition==4) && (slopedisposition==3) && (geodisposition==3) && (landuse_disposition==1), 2, if(landuse_disposition==1,1,0))'
+r.to.vect input=hotspots output=hotspots type=area
+v.out.ogr input=hotspots output=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/hotspots.shp
+
