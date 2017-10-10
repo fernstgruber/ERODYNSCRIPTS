@@ -25,8 +25,30 @@ v.in.ogr input=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/geo50_utm_disposit
 r.patch input=Brachland,Felsgebiet,WeideWieseAlm output=landuse_disposition
 ################################################################################################
 
-##HOTSPOTS
+#HOTSPOTS
 r.mapcalc 'hotspots = if((annprec_disposition==3 || annprec_disposition==4) && (slopedisposition==3) && (geodisposition==3) && (landuse_disposition==1), 2, if(landuse_disposition==1,1,0))'
 r.to.vect input=hotspots output=hotspots type=area
 v.out.ogr input=hotspots output=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/hotspots.shp
+################################################################################################
+
+#Preparing precipitation disposition for multiplication
+r.mapcalc 'annprec_disposition_3class = if(annprec_disposition==4,3,annprec_disposition)'
+################################################################################################
+
+#Multiplication of the disposition maps and reclassification
+r.mapcalc 'multidisposition = landuse_disposition * annprec_disposition_3class * geodisposition * slopedisposition'
+r.mapcalc 'dispositionclasses = if(multidisposition<4, 1, if(multidisposition<9, 2, if(multidisposition>=9,3,null())))'
+r.to.vect input=dispositionclasses output=dispositionclasses type=area
+v.out.ogr input=dispositionclasses output=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/dispositionclasses.shp
+r.to.vect input=landuse_disposition output=landuse_disposition type=area
+v.out.ogr input=landuse_disposition output=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/landuse_disposition.shp
+r.to.vect input=geodisposition output=geodisposition type=area
+v.out.ogr input=geodisposition output=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/geodisposition.shp
+r.to.vect input=annprec_disposition_3class output=annprec_disposition_3class type=area
+v.out.ogr input=annprec_disposition_3class output=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/annprec_disposition_3class.shp
+r.to.vect input=slopedisposition output=slopedisposition type=area
+v.out.ogr input=slopedisposition output=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/slopedisposition.shp
+r.to.vect input=multidisposition output=multidisposition type=area
+v.out.ogr input=multidisposition output=/media/fabs/Volume/ERODYN/ERODYNSCRIPTS/shapes/multidisposition.shp
+
 
